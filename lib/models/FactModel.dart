@@ -1,22 +1,24 @@
-class FactModel{
+class FactModel {}
+
+class FactModelNumber extends FactModel{
   final String result;
   final bool isSuccess;
 
-  FactModel({required this.result, required this.isSuccess});
+  FactModelNumber({required this.result, required this.isSuccess});
 }
 
-class DateFactModel {
+class FactModelDate extends FactModel{
   final int year;
   final String result;
   final bool isSuccess;
 
-  DateFactModel({required this.year, required this.result, required this.isSuccess});
+  FactModelDate({required this.year, required this.result, required this.isSuccess});
 }
 
-class YearFactModel {
+class FactModelYear extends FactModel{
   final String date;
   final String result;
   final bool isSuccess;
 
-  YearFactModel({required this.date, required this.result, required this.isSuccess});
+  FactModelYear({required this.date, required this.result, required this.isSuccess});
 }
