@@ -1,0 +1,1 @@
+enum FactTypes{ math, date, trivia, year, random }
