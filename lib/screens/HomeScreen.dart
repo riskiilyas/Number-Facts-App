@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:number_facts/blocs/FactBloc.dart';
-import 'package:number_facts/screens/DateFactScreen.dart';
 import 'package:number_facts/screens/FactScreen.dart';
 import 'package:number_facts/screens/FactTypes.dart';
-import 'package:number_facts/utilities/Colors.dart';
 import 'package:get/get.dart';
+import 'package:number_facts/utilities/Widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,16 +30,16 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
                         'Number Facts!',
                         style: TextStyle(
-                          color: AppColors.titleColor,
+                          color: Colors.redAccent,
                           fontWeight: FontWeight.bold,
                           fontSize: 32
                         ),
                       ),
-                      const Text(
+                      Text(
                         'by KeeCoding',
                         style: TextStyle(
                           color: Colors.white
@@ -72,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                                   onTap: () {
                                     Get.to(BlocProvider.value(
                                         value: BlocProvider.of<FactBloc>(context),
-                                        child: const DateFactScreen())
+                                        child: const FactScreen(type: FactTypes.date))
                                     );
                                   },
                                   child: Container(
@@ -82,7 +81,11 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                           borderRadius: BorderRadius.all(Radius.circular(24))
                                       ),
-                                      child: Column()
+                                      child: const ContentFact(
+                                        title: 'Date',
+                                        desc: 'Get Interesting Facts about all date in History!',
+                                        icon: Icons.calendar_today_outlined,
+                                      )
                                   ),
                                 ),
                               ),
@@ -93,7 +96,10 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 4),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(FactScreen(type: FactTypes.year,));
+                                    Get.to(BlocProvider.value(
+                                        value: BlocProvider.of<FactBloc>(context),
+                                        child: const FactScreen(type: FactTypes.year,))
+                                    );
                                   },
                                   child: Container(
                                     decoration: const BoxDecoration(
@@ -101,6 +107,11 @@ class HomeScreen extends StatelessWidget {
                                             colors: [Color(0xFF566EE9), Color(0xFF06BCFC)]
                                         ),
                                         borderRadius: BorderRadius.all(Radius.circular(24))
+                                    ),
+                                    child: const ContentFact(
+                                      title: 'Year',
+                                      desc: 'Get Fun Facts of all Years!',
+                                      icon: Icons.history_toggle_off_sharp,
                                     ),
                                   ),
                                 ),
@@ -121,7 +132,10 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 8),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(FactScreen(type: FactTypes.math,));
+                                    Get.to(BlocProvider.value(
+                                        value: BlocProvider.of<FactBloc>(context),
+                                        child: const FactScreen(type: FactTypes.math,))
+                                    );
                                   },
                                   child: Container(
                                     decoration: const BoxDecoration(
@@ -129,6 +143,11 @@ class HomeScreen extends StatelessWidget {
                                             colors: [Color(0xFFA08BCD), Color(0xFFF7C3EA)]
                                         ),
                                         borderRadius: BorderRadius.all(Radius.circular(24))
+                                    ),
+                                    child: const ContentFact(
+                                      title: 'Math',
+                                      desc: 'Get Fun Fact about Numbers in Math!',
+                                      icon: Icons.menu_book,
                                     ),
                                   ),
                                 ),
@@ -143,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                                     // );
                                     Get.to(BlocProvider.value(
                                         value: BlocProvider.of<FactBloc>(context),
-                                        child: FactScreen(type: FactTypes.trivia))
+                                        child: const FactScreen(type: FactTypes.trivia))
                                     );
                                   },
                                   child: Container(
@@ -151,7 +170,12 @@ class HomeScreen extends StatelessWidget {
                                         gradient: LinearGradient(
                                             colors: [Color(0xFFD02B4A), Color(0xFFF15880)]
                                         ),
-                                        borderRadius: BorderRadius.all(Radius.circular(24))
+                                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                                    ),
+                                    child: const ContentFact(
+                                      title: "Trivia",
+                                      desc: "Get Interesting General Facts of a Number!",
+                                      icon: Icons.wine_bar_sharp,
                                     ),
                                   ),
                                 ),
@@ -167,7 +191,10 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 8),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(FactScreen(type: FactTypes.random));
+                            Get.to(BlocProvider.value(
+                                value: BlocProvider.of<FactBloc>(context),
+                                child: const FactScreen(type: FactTypes.random))
+                            );
                           },
                           child: Container(
                             decoration: const BoxDecoration(
@@ -176,11 +203,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 borderRadius: BorderRadius.all(Radius.circular(24))
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Text('FUCK')
-                              ],
+                            child: const ContentFact(
+                              title: "Random",
+                              desc: 'Get Random Interesting Fact about Numbers!',
+                              icon: Icons.help_outline,
                             ),
                           ),
                         ),

@@ -16,12 +16,6 @@ class NumberUtil {
     }
 
     String build = d1.toString()+d2.toString()+d3.toString()+d4.toString();
-    print(build);
-    print(build);
-    print(build);
-    print(build);
-    print(build);
-
 
     total = int.parse(build);
 

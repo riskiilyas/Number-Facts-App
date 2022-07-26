@@ -9,7 +9,6 @@ class NumberPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('aeiurbgiauerbgar');
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -84,3 +83,48 @@ class _DigitPickerState extends State<DigitPicker> {
     );
   }
 }
+
+class ContentFact extends StatelessWidget {
+  const ContentFact({Key? key, required this.title, required this.desc, required this.icon}) : super(key: key);
+  final String title, desc;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 30
+            ),
+            textAlign: TextAlign.left,
+          ),
+          Text(
+            desc,
+            style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 16
+            ),
+            textAlign: TextAlign.left,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Icon(icon,size: 64),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
