@@ -55,8 +55,12 @@ class _FactScreenState extends State<FactScreen> {
                 InkWell(
                     onTap: () {
                       if(widget.type == FactTypes.date) {
-                          int month = int.parse(number.toString().substring(0,2));
-                          int day = int.parse(number.toString().substring(2,4));
+                          String str = number.toString();
+                          while(str.length < 4) {
+                            str = '0$str';
+                          }
+                          int month = int.parse(str.substring(0,2));
+                          int day = int.parse(str.substring(2,4));
                           bloc.add(FactEventDate(day: day, month: month));
                       } else {
                         bloc.add(FactEventNumber(type: widget.type, number: number));
