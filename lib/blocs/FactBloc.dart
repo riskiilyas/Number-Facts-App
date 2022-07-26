@@ -46,8 +46,9 @@ class FactBloc extends Bloc<FactEvent, FactState> {
         emit(FactStateLoading());
         try {
           final model = await network.getFact(event.number, event.type);
-          emit(FactStateSuccess(model: model));
+          emit(FactStateSuccess(model: FactModelString(result: model)));
         } on Exception catch (e) {
+          print('ERROR 2222');
           emit(FactStateError(message: e.toString()));
         }
     });
@@ -58,7 +59,8 @@ class FactBloc extends Bloc<FactEvent, FactState> {
           final model = await network.getFactDate(event.month, event.day);
           emit(FactStateSuccess(model: model));
         } on Exception catch (e) {
-        emit(FactStateError(message: e.toString()));
+          print('ERROR 2222');
+          emit(FactStateError(message: e.toString()));
         }
     });
   }

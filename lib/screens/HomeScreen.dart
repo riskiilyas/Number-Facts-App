@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:number_facts/blocs/FactBloc.dart';
 import 'package:number_facts/screens/DateFactScreen.dart';
 import 'package:number_facts/screens/FactScreen.dart';
 import 'package:number_facts/screens/FactTypes.dart';
@@ -68,7 +70,10 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 8),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(const DateFactScreen());
+                                    Get.to(BlocProvider.value(
+                                        value: BlocProvider.of<FactBloc>(context),
+                                        child: const DateFactScreen())
+                                    );
                                   },
                                   child: Container(
                                       decoration: const BoxDecoration(
@@ -134,7 +139,12 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 4),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(FactScreen(type: FactTypes.trivia));
+                                    // Navigator.push(context, MaterialPageRoute(builder: (context) => FactScreen(type: FactTypes.trivia)),
+                                    // );
+                                    Get.to(BlocProvider.value(
+                                        value: BlocProvider.of<FactBloc>(context),
+                                        child: FactScreen(type: FactTypes.trivia))
+                                    );
                                   },
                                   child: Container(
                                     decoration: const BoxDecoration(

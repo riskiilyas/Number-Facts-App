@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'NumberUtil.dart';
@@ -6,11 +5,13 @@ import 'NumberUtil.dart';
 class NumberPicker extends StatelessWidget {
   NumberPicker(this.onChange, {Key? key}) : super(key: key);
   final Function(int) onChange;
-  final NumberUtil numberUtil = NumberUtil(0, 4);
+  final NumberUtil numberUtil = NumberUtil();
 
   @override
   Widget build(BuildContext context) {
+    print('aeiurbgiauerbgar');
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         DigitPicker((i) {
           onChange(numberUtil.setDigit(0, i));
@@ -44,34 +45,40 @@ class _DigitPickerState extends State<DigitPicker> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GestureDetector(
-          onTap: () {
+        InkWell(
+            borderRadius: BorderRadius.circular(24),
+            onTap: () {
             setState(() {
               (digit < 9) ? ++digit : digit;
               widget.callback(digit);
             });
           },
-            child: const Icon(Icons.arrow_circle_up_rounded)
+            child: const Icon(Icons.arrow_circle_up_rounded,color: Colors.white,size: 48,)
         ),
         Card(
           child: Center(
-            child: Text(
-              digit.toString(),
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text(
+                digit.toString(),
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 42
+                ),
               ),
             ),
           ),
         ),
-        GestureDetector(
+        InkWell(
+            borderRadius: BorderRadius.circular(24),
             onTap: () {
               setState(() {
                 (digit > 0) ? --digit : digit;
                 widget.callback(digit);
               });
             },
-            child: const Icon(Icons.arrow_circle_down_rounded)
+            child: const Icon(Icons.arrow_circle_down_rounded,color: Colors.white,size: 48,)
         ),
       ],
     );

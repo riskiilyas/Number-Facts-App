@@ -8,9 +8,11 @@ void main() {
   runApp(GetMaterialApp(
     home: MaterialApp(
       theme: ThemeData.dark(),
-      home: BlocProvider(
-          create: (BuildContext context) => FactBloc() ,
-          child: HomeScreen()
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (BuildContext context) => FactBloc())
+        ],
+          child: const HomeScreen()
       ),
     ),
   ));

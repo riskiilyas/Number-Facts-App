@@ -7,6 +7,11 @@ class FactModelNumber extends FactModel{
   FactModelNumber({required this.result, required this.isSuccess});
 }
 
+class FactModelString extends FactModel {
+  final String result;
+  FactModelString({required this.result});
+}
+
 class FactModelDate extends FactModel{
   final int year;
   final String result;

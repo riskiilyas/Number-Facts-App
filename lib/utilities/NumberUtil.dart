@@ -1,37 +1,37 @@
 class NumberUtil {
-  NumberUtil(int total, this.digits) {
-    List<int> tempL = [];
-    for(int i = 10; i<total*10; i*=10) {
-      tempL.add(((total % i) / (i / 10)).floor());
-    }
-
-    while(tempL.length < digits) {
-      tempL.add(0);
-    }
-
-    for (var element in tempL.reversed) {
-      numbers.add(element);
-    }
-  }
-
-  final int digits;
-  List<int> numbers = [];
+  int d1 = 0,d2 = 0,d3 = 0,d4 = 0;
+  int total = 0;
 
   int setDigit(int digit, int num) {
-    if(digit > digits) return -1;
-    numbers[digit] = num;
+    if(digit>4) return -1;
+
+    if(digit==0) {
+      d1=num;
+    } else if(digit==1) {
+      d2=num;
+    } else if(digit==2) {
+      d3=num;
+    } else if(digit==3) {
+      d4=num;
+    }
+
+    String build = d1.toString()+d2.toString()+d3.toString()+d4.toString();
+    print(build);
+    print(build);
+    print(build);
+    print(build);
+    print(build);
+
+
+    total = int.parse(build);
+
     return getTotal();
   }
 
-  int getTotal() {
-    int total = 0;
-    int i = 1;
-    for (var element in numbers.reversed) {
-      total += (element * i);
-      i *= 10;
-    }
+  int getTotal() => total;
 
-    return total;
+  String replaceCharAt(String oldString, int index, String newChar) {
+    return oldString.substring(0, index) + newChar + oldString.substring(index + 1);
   }
 
 }
