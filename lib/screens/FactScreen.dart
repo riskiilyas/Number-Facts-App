@@ -152,6 +152,7 @@ class _FactScreenState extends State<FactScreen> {
                       const SizedBox(height: 16),
                       InkWell(
                           onTap: () {
+                            bloc.add(FactEventNeutral());
                             Get.back();
                           },
                           child: Container(

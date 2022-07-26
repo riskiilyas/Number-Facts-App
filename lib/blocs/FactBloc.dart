@@ -18,6 +18,8 @@ class FactEventDate extends FactEvent{
   FactEventDate({required this.day, required this.month});
 }
 
+class FactEventNeutral extends FactEvent {}
+
 ///////////////////// STATE /////////////////////
 class FactState {}
 
@@ -60,6 +62,10 @@ class FactBloc extends Bloc<FactEvent, FactState> {
         } on Exception catch (e) {
           emit(FactStateError(message: e.toString()));
         }
+    });
+
+    on<FactEventNeutral> ((event, emit) async {
+        emit(FactStateNeutral());
     });
   }
 }
