@@ -118,7 +118,7 @@ class ContentFact extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Icon(icon,size: 64),
+                Icon(icon,size: 48),
               ],
             ),
           )

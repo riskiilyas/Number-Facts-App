@@ -25,28 +25,25 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(32), bottomRight: Radius.circular(32)),
                   color: Colors.white24
                 ),
-                child: Expanded(
-                  flex: 1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Number Facts!',
-                        style: TextStyle(
-                          color: Colors.redAccent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 32
-                        ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      'Number Facts!',
+                      style: TextStyle(
+                        color: Colors.redAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32
                       ),
-                      Text(
-                        'by KeeCoding',
-                        style: TextStyle(
-                          color: Colors.white
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                    Text(
+                      'by Riski Ilyas',
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -69,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 8),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(BlocProvider.value(
+                                    Get.to(() => BlocProvider.value(
                                         value: BlocProvider.of<FactBloc>(context),
                                         child: const FactScreen(type: FactTypes.date))
                                     );
@@ -96,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 4),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(BlocProvider.value(
+                                    Get.to(() => BlocProvider.value(
                                         value: BlocProvider.of<FactBloc>(context),
                                         child: const FactScreen(type: FactTypes.year,))
                                     );
@@ -132,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 8),
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(BlocProvider.value(
+                                    Get.to(() => BlocProvider.value(
                                         value: BlocProvider.of<FactBloc>(context),
                                         child: const FactScreen(type: FactTypes.math,))
                                     );
@@ -160,7 +157,7 @@ class HomeScreen extends StatelessWidget {
                                   onTap: () {
                                     // Navigator.push(context, MaterialPageRoute(builder: (context) => FactScreen(type: FactTypes.trivia)),
                                     // );
-                                    Get.to(BlocProvider.value(
+                                    Get.to(() => BlocProvider.value(
                                         value: BlocProvider.of<FactBloc>(context),
                                         child: const FactScreen(type: FactTypes.trivia))
                                     );
@@ -191,7 +188,7 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 8),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(BlocProvider.value(
+                            Get.to(() => BlocProvider.value(
                                 value: BlocProvider.of<FactBloc>(context),
                                 child: const FactScreen(type: FactTypes.random))
                             );
